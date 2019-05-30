@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingBottom="10dp"
+    android:background="#ffffff"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
@@ -10,16 +10,19 @@
         >
 
         <RelativeLayout
-            android:padding="12dp"
+            android:padding="17dp"
             android:layout_width="match_parent"
+            android:id="@+id/rl"
             android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:id="@+id/sno"
                 android:text="Sno"
                 />
+
 
             <TextView
                 android:id="@+id/bookname"
@@ -44,8 +47,15 @@
                 android:layout_below="@+id/bookname"
                 android:layout_marginRight="15dp"/>
 
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:layout_alignParentBottom="true"
+        android:src="@color/cardview_dark_background"/>
 
 </LinearLayout>

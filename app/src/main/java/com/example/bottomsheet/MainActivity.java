@@ -26,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GoogleMap mMap;
     private double latitude,longitude;
+    Marker marker;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private TextView lat;
@@ -175,17 +177,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+int flag=0;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        String s;
+
+if(flag==0){
+    s="Touch the Location Button to get the Current Location ";
+    flag++;
+}
+
+else{
+    s="Current Location";
+}
+        if(marker!=null){
+            marker.remove();
+        }
+
         mMap = googleMap;
-
-
-
         // Latitude and Longitude are provided by the FusedLocationAPI
-
         LatLng cur = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(cur).title("Current Location"));
+        MarkerOptions markerOptions=new MarkerOptions().position(cur).title(s);
+        marker=mMap.addMarker(markerOptions);
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cur));
     }
 }

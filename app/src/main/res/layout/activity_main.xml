@@ -29,7 +29,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#f8f8ff"
+android:background="@color/common_google_signin_btn_text_dark_default"
             android:id="@+id/loc_button"
             android:padding="10dp"
             android:src="@drawable/ic_action_nameee"/>
@@ -116,6 +116,7 @@
                 android:id="@+id/rv"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/first">
+
 
 
 
