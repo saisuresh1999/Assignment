@@ -9,13 +9,23 @@
 
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
+        android:layout_height="675dp"
         >
 
+
+
+
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,11 +37,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/loc_button"
             android:padding="10dp"
             android:id="@+id/lat"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/lat"
             android:padding="10dp"
             android:id="@+id/lon"/>
 
@@ -39,7 +51,8 @@
 
 
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
 
     <android.support.v4.widget.NestedScrollView

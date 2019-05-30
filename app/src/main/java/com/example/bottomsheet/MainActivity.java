@@ -21,6 +21,12 @@ import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.w3c.dom.Text;
@@ -30,7 +36,10 @@ import java.util.List;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    private GoogleMap mMap;
+    private double latitude,longitude;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private TextView lat;
@@ -55,8 +64,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//********************************Google Map Fragment supported by GoogleMapAPI***********************//
 
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
 //**********************************Recycler View Code************************************************//
         recyclerView=(RecyclerView) findViewById(R.id.rv);
@@ -126,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
                             public void onSuccess(Location location) {
 
                                 if(location!=null){
+
+                                    latitude=location.getLatitude();
+                                    longitude=location.getLongitude();
+
+                                   //calling the map to get the current location which is provided by the FusedLocationAPI
+                                    onMapReady(mMap);
+
+
+
+
                                     lat.setText(""+location.getLatitude());
                                     lon.setText(""+location.getLongitude());
                                 }
@@ -134,6 +157,12 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
+
+
+
+
+
+
             }
         });
 
@@ -147,5 +176,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
+
+
+        // Latitude and Longitude are provided by the FusedLocationAPI
+
+        LatLng cur = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(cur).title("Current Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(cur));
+    }
 }
