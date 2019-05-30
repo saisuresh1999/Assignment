@@ -177,6 +177,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+
+//*******************************************Placing the coordinates into Map which was got from FusedLocationAPI*******//
+
 int flag=0;
 
     @Override
