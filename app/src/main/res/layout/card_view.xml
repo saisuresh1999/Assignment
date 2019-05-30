@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sno"
+                android:text="Sno"
+                />
+
+            <TextView
+                android:id="@+id/bookname"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_toRightOf="@+id/sno"
+                android:text="BookName" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/sno"
+                android:layout_height="wrap_content"
+                android:text="₹"
+                android:id="@+id/rs"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/rs"
+                android:text="Cost"
+                android:id="@+id/cost"
+                android:layout_below="@+id/bookname"
+                android:layout_marginRight="15dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
