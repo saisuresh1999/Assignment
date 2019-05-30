@@ -181,26 +181,32 @@ int flag=0;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        String s;
 
-if(flag==0){
-    s="Touch the Location Button to get the Current Location ";
-    flag++;
-}
-
-else{
-    s="Current Location";
-}
         if(marker!=null){
             marker.remove();
         }
 
+
+        float zoomLevel;
         mMap = googleMap;
+
+
+
         // Latitude and Longitude are provided by the FusedLocationAPI
         LatLng cur = new LatLng(latitude, longitude);
-        MarkerOptions markerOptions=new MarkerOptions().position(cur).title(s);
-        marker=mMap.addMarker(markerOptions);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(cur));
+            if(flag==0){
+               zoomLevel = 0.0f;
+                flag++;
+                }
+
+            else{
+                MarkerOptions markerOptions=new MarkerOptions().position(cur).title("Current Location");
+                marker=mMap.addMarker(markerOptions);
+               zoomLevel = 16.0f;
+
+                }
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cur,zoomLevel));
     }
 }
